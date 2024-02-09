@@ -1,13 +1,55 @@
-import { View, Text, TextInput } from 'react-native'
-import React from 'react'
+import Colors from '@/constants/Colors';
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-const Input = ({label, placeholder, value}:any ) => {
-  return (
-    <View className='outline-2 outline-slate-600 w-100 justify-start py-2 flex-1'>
-      <Text className='mb-1 text-slate-700 text-sm'>{label}</Text>
-      <TextInput placeholder={placeholder} value={value} className='w-full outline-4 outline-slate-600 bg-white p-4 rounded-lg'/>
-    </View>
-  )
+
+interface InputFieldProps {
+  label: string;
+  placeholder?: string;
+  initialValue?: string;
+  onChangeText: (text: string) => void;
 }
 
-export default Input
+const Input: React.FC<InputFieldProps>  = ({ label, placeholder, initialValue, onChangeText }) => {
+  const [value, setValue] = useState(initialValue);
+
+  const handleChange = (newText: any) => {
+    setValue(newText);
+    onChangeText(newText); // Pass the updated value to the parent component
+  };
+
+  return (
+    <View style={styles.container} className='w-full'>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput
+        value={value}
+        onChangeText={handleChange}
+        placeholder={placeholder}
+        style={styles.input}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 15,
+    
+    
+  },
+  label: {
+    color: Colors.darkGray,
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderColor: Colors.lightGray,
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+  },
+});
+
+
+export default Input;

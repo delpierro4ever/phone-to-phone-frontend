@@ -52,11 +52,14 @@ function RootLayoutNav() {
   return (
 
       <Stack >
-        {/* <Stack.Screen name="onboarding/onBoarding" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="onboarding/onBoarding" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(signIn)/Login" options={{ headerShown: false }} />
+        <Stack.Screen name="(signIn)/Signup" options={{ headerShown: false }} />
+        <Stack.Screen name="(signIn)/accountCreatedSuccess" options={{ headerShown: false }} />
         <Stack.Screen name='(modals)/pay' options={{ presentation: 'transparentModal', 
         animation: 'fade',
-        headerLeft: () => (
+        headerLeft: () => (                  
           <TouchableOpacity onPress={() => router.back}>
             <Ionicons name='close-outline' size={28} />
           </TouchableOpacity>

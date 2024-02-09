@@ -6,7 +6,8 @@ const Page = () => {
   return (
     <View>
       <Text>Home</Text>
-      <Link href={'/(signIn)/login'}>Login</Link>
+      <Link href={'/(signIn)/Login'}>Login</Link>
+      <Link href={'/onboarding/onBoarding'}>Onboarding</Link>
     </View>
   )
 }
